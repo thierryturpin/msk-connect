@@ -10,13 +10,13 @@ module "vpc_dev" {
   name = var.env
   cidr = var.vpc_cidr
 
-  azs             = var.vpc_azs
+  azs = var.vpc_azs
 
-  private_subnets = var.private_subnets_cidrs
-  private_subnet_tags = {"Type" = "private"}
+  private_subnets     = var.private_subnets_cidrs
+  private_subnet_tags = { "Type" = "private" }
 
-  public_subnets  = var.public_subnets_cidrs
-  public_subnet_tags = {"Type" = "public"}
+  public_subnets     = var.public_subnets_cidrs
+  public_subnet_tags = { "Type" = "public" }
 
   # Do not manage default vpc and route table
   manage_default_vpc         = false
@@ -29,7 +29,7 @@ module "vpc_dev" {
   manage_default_security_group  = true
   default_security_group_ingress = []
   default_security_group_egress  = []
-  default_security_group_name = "DO_NOT_USE"
+  default_security_group_name    = "DO_NOT_USE"
 
   # VPC Flow Logs (Cloudwatch log group and IAM role will be created)
   enable_flow_log                      = true

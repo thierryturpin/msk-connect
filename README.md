@@ -15,3 +15,23 @@ sudo passwd openvpn
 
 
 9X7Us6uxhPGPFNNugftaYRbgU5HYrcvRC
+
+
+todo next steps:
+* generate random secret https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password
+* check to use Kafkacat
+* source credentials from `.env` files with docker-compose
+* EC2 with docker for schema registry and connect
+* EC2 with docker for mongodb
+
+
+## Config file for kcat 
+filename: `~/.config/kcat.conf`
+```
+security.protocol=SASL_SSL
+sasl.mechanisms=SCRAM-SHA-512
+api.version.request=true
+sasl.username=user
+sasl.password=pass
+bootstrap.servers=b-1.dev-msk.w1o0en.c1.kafka.eu-west-1.amazonaws.com:9096,b-2.dev-msk.w1o0en.c1.kafka.eu-west-1.amazonaws.com:9096
+```
