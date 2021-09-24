@@ -45,9 +45,13 @@ module "sg_mssql_private_rule_openvpn" {
       rule                     = "ssh-tcp"
       source_security_group_id = module.sg_openvpn_private.security_group_id
     },
+    {
+      rule                     = "mssql-tcp"
+      source_security_group_id = module.sg_openvpn_private.security_group_id
+    },
   ]
 
-  number_of_computed_ingress_with_source_security_group_id = 1
+  number_of_computed_ingress_with_source_security_group_id = 2
 }
 
 data "aws_ami" "amazon_linux-2" {
