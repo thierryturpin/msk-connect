@@ -32,9 +32,9 @@ module "vpc_dev" {
   default_security_group_name    = "DO_NOT_USE"
 
   # VPC Flow Logs (Cloudwatch log group and IAM role will be created)
-  enable_flow_log                      = true
-  create_flow_log_cloudwatch_log_group = true
-  create_flow_log_cloudwatch_iam_role  = true
+  enable_flow_log                      = false
+  create_flow_log_cloudwatch_log_group = false
+  create_flow_log_cloudwatch_iam_role  = false
   flow_log_max_aggregation_interval    = 60
 
   enable_nat_gateway     = true
