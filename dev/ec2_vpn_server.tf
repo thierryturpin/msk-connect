@@ -53,12 +53,26 @@ module "sg_openvpn_private_rule_openvpn" {
   ]
 }
 
+data "aws_ami" "openvpn" {
+  most_recent = true
+  owners      = ["aws-marketplace"]
+
+  filter {
+    name   = "description"
+    values = ["OpenVPN Access Server 2.8.3 publisher image from https://www.openvpn.net/."]
+  }
+
+  filter {
+    name   = "product-code"
+    values = ["f2ew2wrz425a1jagnifd02u5t"]
+  }
+}
 
 // Create EC2 instance
 module "openvpn" {
   source = "terraform-aws-modules/ec2-instance/aws"
   name   = "openvpn"
-  ami    = "ami-0e1415fedc1664f51"
+  ami    = data.aws_ami.openvpn.id
 
   # iam_instance_profile = "" todo
   source_dest_check           = false
