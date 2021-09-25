@@ -55,12 +55,12 @@ resource "aws_msk_scram_secret_association" "connect" {
 }
 
 resource "aws_secretsmanager_secret" "connect" {
-  name       = "AmazonMSK_connect"
+  name       = "AmazonMSK_connect-${var.connect_key}"
   kms_key_id = aws_kms_key.connect.key_id
 }
 
 resource "aws_kms_key" "connect" {
-  description = "Connect user key for MSK Cluster Scram Secret association"
+  description             = "Connect user key for MSK Cluster Scram Secret association ${var.connect_key}"
   deletion_window_in_days = 7
 }
 

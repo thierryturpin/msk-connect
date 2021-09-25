@@ -13,7 +13,7 @@ variable "owner" {
 variable "ami_key_pair_name" {
   type        = string
   description = "The ssh key name"
-  default     = "TT"
+  default     = "turpin.be"
 }
 
 variable "my_public_ip" {
@@ -31,7 +31,7 @@ variable "vpc_cidr" {
 variable "vpc_azs" {
   type        = list(string)
   description = "The different azs to use"
-  default     = ["eu-west-1a", "eu-west-1b"]
+  default     = ["eu-central-1a", "eu-central-1b"]
 }
 
 variable "private_subnets_cidrs" {
@@ -44,4 +44,9 @@ variable "public_subnets_cidrs" {
   type        = list(string)
   description = "The subnets x.x.x.x/y"
   default     = ["172.31.32.0/20", "172.31.0.0/20"]
+}
+
+variable "connect_key" {
+  type        = string
+  description = "In order to generate a unique connect & secret key, e.g. a date YYYYMMDD"
 }
