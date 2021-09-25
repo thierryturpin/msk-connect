@@ -1,3 +1,4 @@
+# Tag variables
 variable "env" {
   type        = string
   description = "The environment, dev, tst or prd"
@@ -12,7 +13,7 @@ variable "owner" {
 
 variable "ami_key_pair_name" {
   type        = string
-  description = "The ssh key name"
+  description = "The key pair to use for the EC2 instances"
   default     = "turpin.be"
 }
 
@@ -30,19 +31,19 @@ variable "vpc_cidr" {
 
 variable "vpc_azs" {
   type        = list(string)
-  description = "The different azs to use"
+  description = "The different azs to use, region is set in main.tf"
   default     = ["eu-central-1a", "eu-central-1b"]
 }
 
 variable "private_subnets_cidrs" {
   type        = list(string)
-  description = "The subnets x.x.x.x/y"
+  description = "Private subnets x.x.x.x/y"
   default     = ["172.31.48.0/20", "172.31.64.0/20"]
 }
 
 variable "public_subnets_cidrs" {
   type        = list(string)
-  description = "The subnets x.x.x.x/y"
+  description = "Public subnets x.x.x.x/y"
   default     = ["172.31.32.0/20", "172.31.0.0/20"]
 }
 
