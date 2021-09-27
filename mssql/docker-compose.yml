@@ -9,9 +9,9 @@ services:
     image: mcr.microsoft.com/mssql/server
     container_name: mssql
     ports:
-      - 1433:1433
+      - "1433:1433"
     environment:
-      - SA_PASSWORD=/run/secrets/SA_PASSWORD
+      - SA_PASSWORD=${sa_password}
       - ACCEPT_EULA=Y
       - MSSQL_PID=Standard
       - MSSQL_AGENT_ENABLED=true
@@ -55,7 +55,3 @@ services:
         done
         # So that the container doesn't shut down, sleep this thread
         sleep infinity
-
-secrets:
-  mongodb_root_password:
-    file: ./credentials/.SA_PASSWORD
