@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: root-db
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongodb_root_password
+      MONGO_INITDB_ROOT_USERNAME_FILE: /run/secrets/mongodb_root_username
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d/
+      - ./config/mongod.conf:/etc/mongod.conf
+      - ./data:/var/lib/mongodb
+      - ./logs:/var/log/mongodb/
+    command: mongod --config /etc/mongod.conf
+    secrets:
+      - mongodb_root_password
+      - mongodb_root_username
+
+secrets:
+  mongodb_root_password:
+    file: ./credentials/.mongodb_root_password
+  mongodb_root_username:
+    file: ./credentials/.mongodb_root_username

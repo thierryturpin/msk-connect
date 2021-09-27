@@ -16,8 +16,20 @@ module "sg_msk_private_kafka_rule" {
       protocol                 = "tcp"
       source_security_group_id = module.sg_openvpn_private.security_group_id
     },
+    {
+      from_port                = 9096
+      to_port                  = 9096
+      protocol                 = "tcp"
+      source_security_group_id = module.sg_mssql_private.security_group_id
+    },
+    {
+      from_port                = 9096
+      to_port                  = 9096
+      protocol                 = "tcp"
+      source_security_group_id = module.sg_mongodb_private.security_group_id
+    },
   ]
-  number_of_computed_ingress_with_source_security_group_id = 1
+  number_of_computed_ingress_with_source_security_group_id = 3
 }
 
 resource "aws_msk_cluster" "msk" {
