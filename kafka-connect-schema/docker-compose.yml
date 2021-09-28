@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   connect:
-    image: confluentinc/cp-kafka-connect:6.0.0
+    image: confluentinc/cp-kafka-connect:6.0.1
     hostname: connect
     container_name: connect
     depends_on:
@@ -23,15 +23,15 @@ services:
 
       CONNECT_REST_PORT: 28082
       CONNECT_GROUP_ID: aws-dev
-      CONNECT_CONFIG_STORAGE_TOPIC: aws-dev-config
-      CONNECT_OFFSET_STORAGE_TOPIC: aws-dev-offset
-      CONNECT_STATUS_STORAGE_TOPIC: aws-dev-storage
+      CONNECT_CONFIG_STORAGE_TOPIC: _aws-dev-config
+      CONNECT_OFFSET_STORAGE_TOPIC: _aws-dev-offset
+      CONNECT_STATUS_STORAGE_TOPIC: _aws-dev-storage
       CONNECT_AUTO_CREATE_TOPICS_ENABLE: "true"
       CONNECT_KEY_CONVERTER: "io.confluent.connect.avro.AvroConverter"
       CONNECT_VALUE_CONVERTER: "io.confluent.connect.avro.AvroConverter"
       CONNECT_REST_ADVERTISED_HOST_NAME: ${rest_advertised_host_name}
-      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: "schema-registry:8081"
-      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: "schema-registry:8081"
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
       CONNECT_SANITIZE_FIELD_NAMES : "true"
       CONNECT_LOG4J_ROOT_LOGLEVEL: "INFO"
       CONNECT_LOG4J_LOGGERS: "org.apache.kafka.connect.runtime.rest=WARN,org.reflections=ERROR"
@@ -41,7 +41,7 @@ services:
       CONNECT_PLUGIN_PATH: /usr/share/java
       CONNECT_CONNECTOR_CLIENT_CONFIG_OVERRIDE_POLICY: All
     volumes:
-     - ./connect_jars:/usr/share/java/
+     - ./connect_jars:/usr/share/java/kafka/
 
   schema-registry:
     image: confluentinc/cp-schema-registry:6.2.1

@@ -40,7 +40,7 @@ module "sg_connect_schema_private_rule_openvpn" {
     },
   ]
 
-  number_of_computed_ingress_with_source_security_group_id = 2
+  number_of_computed_ingress_with_source_security_group_id = 3
 }
 
 module "ec2_instance_kafka_connect_schema" {
@@ -51,7 +51,7 @@ module "ec2_instance_kafka_connect_schema" {
 
   # iam_instance_profile = "" todo
   source_dest_check           = true
-  instance_type               = "t2.small"
+  instance_type               = "t2.xlarge"
   vpc_security_group_ids      = [module.sg_kafka_connect_schema_private.security_group_id]
   associate_public_ip_address = false
   availability_zone           = element(module.vpc_dev.azs, 0)
