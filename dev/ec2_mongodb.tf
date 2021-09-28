@@ -10,7 +10,7 @@ module "sg_mongodb_private" {
 
 }
 
-module "sg_mongodb_private_rule_openvpn" {
+module "sg_mongodb_private_rules" {
   source            = "terraform-aws-modules/security-group/aws"
   create_sg         = false
   security_group_id = module.sg_mongodb_private.security_group_id
@@ -30,9 +30,13 @@ module "sg_mongodb_private_rule_openvpn" {
       rule                     = "mongodb-27017-tcp"
       source_security_group_id = module.sg_openvpn_private.security_group_id
     },
+    {
+      rule                     = "mongodb-27017-tcp"
+      source_security_group_id = module.sg_kafka_connect_schema_private.security_group_id
+    },
   ]
 
-  number_of_computed_ingress_with_source_security_group_id = 2
+  number_of_computed_ingress_with_source_security_group_id = 3
 }
 
 module "ec2_instance_mongodb" {

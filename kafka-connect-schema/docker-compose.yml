@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  connect:
+    image: confluentinc/cp-kafka-connect:6.0.0
+    hostname: connect
+    container_name: connect
+    depends_on:
+      - schema-registry
+    ports:
+      - "28082:28082"
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: ${bootstrap_servers}
+
+      CONNECT_SECURITY_PROTOCOL: SASL_SSL
+      CONNECT_SASL_MECHANISM: SCRAM-SHA-512
+      CONNECT_SASL_JAAS_CONFIG: ${sasl_jaas_config}
+      CONNECT_CONSUMER_SECURITY_PROTOCOL: SASL_SSL
+      CONNECT_CONSUMER_SASL_MECHANISM: SCRAM-SHA-512
+      CONNECT_CONSUMER_SASL_JAAS_CONFIG: ${sasl_jaas_config}
+      CONNECT_PRODUCER_SECURITY_PROTOCOL: SASL_SSL
+      CONNECT_PRODUCER_SASL_MECHANISM: SCRAM-SHA-512
+      CONNECT_PRODUCER_SASL_JAAS_CONFIG: ${sasl_jaas_config}
+
+      CONNECT_REST_PORT: 28082
+      CONNECT_GROUP_ID: aws-dev
+      CONNECT_CONFIG_STORAGE_TOPIC: aws-dev-config
+      CONNECT_OFFSET_STORAGE_TOPIC: aws-dev-offset
+      CONNECT_STATUS_STORAGE_TOPIC: aws-dev-storage
+      CONNECT_AUTO_CREATE_TOPICS_ENABLE: "true"
+      CONNECT_KEY_CONVERTER: "io.confluent.connect.avro.AvroConverter"
+      CONNECT_VALUE_CONVERTER: "io.confluent.connect.avro.AvroConverter"
+      CONNECT_REST_ADVERTISED_HOST_NAME: ${rest_advertised_host_name}
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: "schema-registry:8081"
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: "schema-registry:8081"
+      CONNECT_SANITIZE_FIELD_NAMES : "true"
+      CONNECT_LOG4J_ROOT_LOGLEVEL: "INFO"
+      CONNECT_LOG4J_LOGGERS: "org.apache.kafka.connect.runtime.rest=WARN,org.reflections=ERROR"
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 2
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 2
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 2
+      CONNECT_PLUGIN_PATH: /usr/share/java
+      CONNECT_CONNECTOR_CLIENT_CONFIG_OVERRIDE_POLICY: All
+    volumes:
+     - ./connect_jars:/usr/share/java/
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:6.2.1
+    hostname: schema-registry
+    container_name: schema-registry
+    ports:
+      - "8081:8081"
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: ${bootstrap_servers}
+      SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL: SASL_SSL
+      SCHEMA_REGISTRY_KAFKASTORE_SASL_MECHANISM: SCRAM-SHA-512
+      SCHEMA_REGISTRY_KAFKASTORE_SASL_JAAS_CONFIG: ${sasl_jaas_config}
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081

@@ -4,7 +4,7 @@ resource "aws_security_group" "sg_msk_private" {
   vpc_id      = module.vpc_dev.vpc_id
 }
 
-module "sg_msk_private_kafka_rule" {
+module "sg_msk_private_kafka_rules" {
   source            = "terraform-aws-modules/security-group/aws"
   create_sg         = false
   security_group_id = aws_security_group.sg_msk_private.id
@@ -20,16 +20,10 @@ module "sg_msk_private_kafka_rule" {
       from_port                = 9096
       to_port                  = 9096
       protocol                 = "tcp"
-      source_security_group_id = module.sg_mssql_private.security_group_id
-    },
-    {
-      from_port                = 9096
-      to_port                  = 9096
-      protocol                 = "tcp"
-      source_security_group_id = module.sg_mongodb_private.security_group_id
+      source_security_group_id = module.sg_kafka_connect_schema_private.security_group_id
     },
   ]
-  number_of_computed_ingress_with_source_security_group_id = 3
+  number_of_computed_ingress_with_source_security_group_id = 2
 }
 
 resource "aws_msk_cluster" "msk" {
@@ -76,9 +70,14 @@ resource "aws_kms_key" "connect" {
   deletion_window_in_days = 7
 }
 
+resource "random_password" "connect_password" {
+  length  = 16
+  special = false
+}
+
 resource "aws_secretsmanager_secret_version" "connect" {
   secret_id     = aws_secretsmanager_secret.connect.id
-  secret_string = jsonencode({ username = "user", password = "pass" })
+  secret_string = jsonencode({ username = "connect", password = random_password.connect_password.result })
 }
 
 resource "aws_secretsmanager_secret_policy" "example" {
