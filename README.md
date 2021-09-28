@@ -15,7 +15,6 @@ ssh root@{public_ip} -i PEM/turpin.be.pem
 
 sudo passwd openvpn
 ```
-mgp4VbZVHwSPyYW3tm2xZi6WgWdSJgeaD
 
 ## setup mssql, mongodb and kcat
 ```
@@ -38,7 +37,12 @@ filename: `~/.config/kcat.conf`
 security.protocol=SASL_SSL
 sasl.mechanisms=SCRAM-SHA-512
 api.version.request=true
-sasl.username=user
+sasl.username=connect
 sasl.password=
 bootstrap.servers=b-1.dev-msk.w1o0en.c1.kafka.eu-west-1.amazonaws.com:9096,b-2.dev-msk.w1o0en.c1.kafka.eu-west-1.amazonaws.com:9096
+```
+
+kcat consume data
+```
+kcat -t ip-172-31-52-30.eu-central-1.compute.internal.dbo.ORDERS -s avro -r http://172.31.59.134:8081
 ```
