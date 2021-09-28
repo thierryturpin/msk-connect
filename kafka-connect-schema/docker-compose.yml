@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   connect:
-    image: confluentinc/cp-kafka-connect:6.0.1
+    image: confluentinc/cp-kafka-connect:6.2.1
     hostname: connect
     container_name: connect
     depends_on:
@@ -41,7 +41,7 @@ services:
       CONNECT_PLUGIN_PATH: /usr/share/java
       CONNECT_CONNECTOR_CLIENT_CONFIG_OVERRIDE_POLICY: All
     volumes:
-     - ./connect_jars:/usr/share/java/kafka/
+     - ./connect_jars:/usr/share/java/kafka/plugins/
 
   schema-registry:
     image: confluentinc/cp-schema-registry:6.2.1
