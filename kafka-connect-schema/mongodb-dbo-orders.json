@@ -2,7 +2,7 @@
     "config": {
         "behavior.on.null.values": "ignore",
         "collection": "ORDERS",
-        "connection.uri": "mongodb://clubmed:Init123Y@172.31.51.239:27017/dev",
+        "connection.uri": "mongodb://clubmed:Init123Y@172.31.60.87",
         "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
         "connector.client.config.override.policy": "All",
         "database": "dev",
@@ -11,7 +11,7 @@
         "document.id.strategy.partial.value.projection.type": "AllowList",
         "max.batch.size": "100",
         "tasks.max": "1",
-        "topics": "ip-172-31-52-30.eu-central-1.compute.internal.dbo.ORDERS",
+        "topics": "dev.dbo.ORDERS",
         "transforms": "unwrap",
         "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
         "writemodel.strategy": "com.mongodb.kafka.connect.sink.writemodel.strategy.UpdateOneTimestampsStrategy"

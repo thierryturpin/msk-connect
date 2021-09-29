@@ -2,23 +2,23 @@
     "name": "mssql-dbo-orders",
     "config": {
         "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
-        "database.hostname": "172.31.52.30",
+        "database.hostname": "172.31.59.71",
         "database.port": "1433",
         "database.user": "sa",
         "database.password": "Init123Y",
         "database.dbname": "demo",
-        "database.server.name": "ip-172-31-52-30.eu-central-1.compute.internal",
+        "database.server.name": "dev",
         "table.include.list": "dbo.ORDERS",
         "include.schema.changes": "false",
         "topic.creation.default.replication.factor": 2,
         "topic.creation.default.partitions": 10,
-        "database.history.kafka.bootstrap.servers": "b-1.dev-msk.fyjen8.c1.kafka.eu-central-1.amazonaws.com:9096,b-2.dev-msk.fyjen8.c1.kafka.eu-central-1.amazonaws.com:9096",
+        "database.history.kafka.bootstrap.servers": "b-1.dev-msk.o64p78.c1.kafka.eu-central-1.amazonaws.com:9096,b-2.dev-msk.o64p78.c1.kafka.eu-central-1.amazonaws.com:9096",
         "database.history.kafka.topic": "dbhistory.dbo.orders",
         "database.history.consumer.security.protocol": "SASL_SSL",
         "database.history.consumer.sasl.mechanism": "SCRAM-SHA-512",
-        "database.history.consumer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"W6JbHG7q20if6BPP\";",
+        "database.history.consumer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"h9JtoZQtZ3sLcPPb\";",
         "database.history.producer.security.protocol": "SASL_SSL",
         "database.history.producer.sasl.mechanism": "SCRAM-SHA-512",
-        "database.history.producer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"W6JbHG7q20if6BPP\";"
+        "database.history.producer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"h9JtoZQtZ3sLcPPb\";"
     }
 }

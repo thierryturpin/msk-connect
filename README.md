@@ -15,14 +15,17 @@ ssh root@{public_ip} -i PEM/turpin.be.pem
 
 sudo passwd openvpn
 ```
+xD4xYP8QhHYT4bbUjzNmkv8cTZR4uPWwD
 
 ## setup mssql, mongodb and kcat
 ```
 git clone https://thierryturpin@github.com/thierryturpin/msk-connect.git
+bw get password docker-build-push | pbcopy
 ```
 
 * mongodb, copy template files from `credentials` dir
 * mssql, set password in `.env` file and source `.env` file
+* kafka connect, update .env file with broker, jaas_config and connect credentials
 
 mssql doesn't take a file like mongodb to source credentials, work-around, use docker secrets in a second step: https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-linux-ver15&preserve-view=true&pivots=cs1-bash#sapassword
 
@@ -44,5 +47,5 @@ bootstrap.servers=b-1.dev-msk.w1o0en.c1.kafka.eu-west-1.amazonaws.com:9096,b-2.d
 
 kcat consume data
 ```
-kcat -t ip-172-31-52-30.eu-central-1.compute.internal.dbo.ORDERS -s avro -r http://172.31.59.134:8081
+kcat -t dev.dbo.ORDERS -s avro -r http://172.31.63.42:8081
 ```
