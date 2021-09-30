@@ -44,10 +44,6 @@ resource "aws_msk_cluster" "msk" {
   }
 }
 
-output "zookeeper_connect_string" {
-  value = aws_msk_cluster.msk.zookeeper_connect_string
-}
-
 output "bootstrap_brokers_scram" {
   description = "Connection host:port pairs"
   value       = aws_msk_cluster.msk.bootstrap_brokers_sasl_scram
