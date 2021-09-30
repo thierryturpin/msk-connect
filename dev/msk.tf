@@ -1,3 +1,8 @@
+##========================================================================================
+##                                                                                      ##
+##                                          MSK                                         ##
+##                                                                                      ##
+##========================================================================================
 resource "aws_security_group" "sg_msk_private" {
   name        = "sg_msk_private"
   description = "msk-private"
@@ -42,11 +47,6 @@ resource "aws_msk_cluster" "msk" {
       scram = true
     }
   }
-}
-
-output "bootstrap_brokers_scram" {
-  description = "Connection host:port pairs"
-  value       = aws_msk_cluster.msk.bootstrap_brokers_sasl_scram
 }
 
 resource "aws_msk_scram_secret_association" "connect" {

@@ -1,6 +1,8 @@
-
-// Create EC2 instance
-// cloud init for docker, docker-compose
+##========================================================================================
+##                                                                                      ##
+##                                          EC2                                         ##
+##                                                                                      ##
+##========================================================================================
 
 module "sg_kafka_connect_schema_private" {
   source      = "terraform-aws-modules/security-group/aws"
@@ -65,8 +67,4 @@ module "ec2_instance_kafka_connect_schema" {
       volume_size = 50
     },
   ]
-}
-
-output "ec2_instance_kafka_connect_schema-ec2_instance_dns" {
-  value = module.ec2_instance_kafka_connect_schema.private_dns
 }

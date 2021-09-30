@@ -1,4 +1,8 @@
-// Create a security group
+##========================================================================================
+##                                                                                      ##
+##                                          EC2                                         ##
+##                                                                                      ##
+##========================================================================================
 
 module "sg_openvpn_public" {
   source      = "terraform-aws-modules/security-group/aws"
@@ -84,12 +88,4 @@ module "openvpn" {
 
   key_name = var.ami_key_pair_name
 
-}
-
-output "openvpn-ec2_instance_dns" {
-  value = module.openvpn.public_dns
-}
-
-output "openvpn-url" {
-  value = "https://${module.openvpn.public_dns}:943"
 }

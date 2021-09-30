@@ -1,6 +1,8 @@
-
-// Create EC2 instance
-// cloud init for docker, docker-compose
+##========================================================================================
+##                                                                                      ##
+##                                          EC2                                         ##
+##                                                                                      ##
+##========================================================================================
 
 module "sg_mongodb_private" {
   source      = "terraform-aws-modules/security-group/aws"
@@ -61,8 +63,4 @@ module "ec2_instance_mongodb" {
       volume_size = 50
     },
   ]
-}
-
-output "mongo-ec2_instance_dns" {
-  value = module.ec2_instance_mongodb.private_dns
 }

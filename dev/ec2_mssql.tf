@@ -1,6 +1,8 @@
-
-// Create EC2 instance
-// cloud init for docker, docker-compose
+##========================================================================================
+##                                                                                      ##
+##                                          EC2                                         ##
+##                                                                                      ##
+##========================================================================================
 
 locals {
 
@@ -90,8 +92,4 @@ module "ec2_instance_mssql" {
       volume_size = 50
     },
   ]
-}
-
-output "mssql-ec2_instance_dns" {
-  value = module.ec2_instance_mssql.private_dns
 }
