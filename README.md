@@ -31,9 +31,6 @@ bw get password docker-build-push | pbcopy
 
 mssql doesn't take a file like mongodb to source credentials, work-around, use docker secrets in a second step: https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-linux-ver15&preserve-view=true&pivots=cs1-bash#sapassword
 
-## todo next steps:
-* recording of demo
-
 ## Config file for kcat 
 filename: `~/.config/kcat.conf`
 ```
