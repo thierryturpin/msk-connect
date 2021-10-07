@@ -2,7 +2,7 @@
     "name": "mssql-dbo-orders",
     "config": {
         "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
-        "database.hostname": "172.31.59.71",
+        "database.hostname": "172.31.60.188",
         "database.port": "1433",
         "database.user": "sa",
         "database.password": "Init123Y",
@@ -12,13 +12,13 @@
         "include.schema.changes": "false",
         "topic.creation.default.replication.factor": 2,
         "topic.creation.default.partitions": 10,
-        "database.history.kafka.bootstrap.servers": "b-1.dev-msk.o64p78.c1.kafka.eu-central-1.amazonaws.com:9096,b-2.dev-msk.o64p78.c1.kafka.eu-central-1.amazonaws.com:9096",
+        "database.history.kafka.bootstrap.servers": "b-1.dev-msk.cf3xyg.c1.kafka.eu-central-1.amazonaws.com:9096,b-2.dev-msk.cf3xyg.c1.kafka.eu-central-1.amazonaws.com:9096",
         "database.history.kafka.topic": "dbhistory.dbo.orders",
         "database.history.consumer.security.protocol": "SASL_SSL",
         "database.history.consumer.sasl.mechanism": "SCRAM-SHA-512",
-        "database.history.consumer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"h9JtoZQtZ3sLcPPb\";",
+        "database.history.consumer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"wk5m4t6cxZYVoiHz\";",
         "database.history.producer.security.protocol": "SASL_SSL",
         "database.history.producer.sasl.mechanism": "SCRAM-SHA-512",
-        "database.history.producer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"h9JtoZQtZ3sLcPPb\";"
+        "database.history.producer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"wk5m4t6cxZYVoiHz\";"
     }
 }

@@ -2,7 +2,7 @@
     "config": {
         "behavior.on.null.values": "ignore",
         "collection": "ORDERS",
-        "connection.uri": "mongodb://clubmed:Init123Y@172.31.60.87",
+        "connection.uri": "mongodb://clubmed:Init123Y@172.31.51.249",
         "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
         "connector.client.config.override.policy": "All",
         "database": "dev",
