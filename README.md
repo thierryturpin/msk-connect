@@ -1,5 +1,7 @@
 # msk-connect
 
+YouTube [recording](https://youtu.be/g5Kb53irYrI)  
+
 Important terraform variable: `my_public_ip`
 ```
 curl ifconfig.me/all
