@@ -46,7 +46,8 @@ bootstrap.servers=b-1.dev-msk.w1o0en.c1.kafka.eu-west-1.amazonaws.com:9096,b-2.d
 
 kcat consume data
 ```
-kcat -t dev.dbo.ORDERS -s avro -r http://172.31.63.42:8081
+connect_host=
+kcat -t dev.dbo.ORDERS -s avro -r http://$connect_host:8081
 ```
 
 # Kafka connect REST interface interactions
