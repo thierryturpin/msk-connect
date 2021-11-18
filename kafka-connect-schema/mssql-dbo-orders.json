@@ -12,6 +12,8 @@
         "include.schema.changes": "false",
         "topic.creation.default.replication.factor": 2,
         "topic.creation.default.partitions": 10,
+        "topic.creation.default.retention.ms": 10000,
+        "topic.creation.default.cleanup.policy": "delete",
         "database.history.kafka.bootstrap.servers": "b-1.dev-msk.cf3xyg.c1.kafka.eu-central-1.amazonaws.com:9096,b-2.dev-msk.cf3xyg.c1.kafka.eu-central-1.amazonaws.com:9096",
         "database.history.kafka.topic": "dbhistory.dbo.orders",
         "database.history.consumer.security.protocol": "SASL_SSL",
