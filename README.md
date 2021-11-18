@@ -99,3 +99,12 @@ curl -i -X POST \
 ```
 Kafka connect rest interface [doc](https://docs.confluent.io/4.1.0/connect/references/restapi.html)
 
+### If the full kafka client needs to be installed  
+https://docs.aws.amazon.com/msk/latest/developerguide/msk-password.html
+```
+cd
+sudo yum install java-1.8.0
+wget https://archive.apache.org/dist/kafka/2.2.1/kafka_2.12-2.2.1.tgz
+tar -xzf kafka_2.12-2.2.1.tgz
+
+```
