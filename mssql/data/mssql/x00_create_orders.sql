@@ -4,6 +4,7 @@ CREATE TABLE demo.dbo.ORDERS
     ( order_id INT,
       customer_id INT,
       order_ts DATE,
+      order_date varchar(10),
       order_total_usd DECIMAL(5,2),
       item VARCHAR(50),
       last_updated smalldatetime
