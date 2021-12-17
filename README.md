@@ -24,7 +24,6 @@ sudo passwd openvpn
 ## setup mssql, mongodb and kcat
 ```
 git clone https://thierryturpin@github.com/thierryturpin/msk-connect.git
-bw get password docker-build-push | pbcopy
 ```
 
 * mongodb, copy template files from `credentials` dir

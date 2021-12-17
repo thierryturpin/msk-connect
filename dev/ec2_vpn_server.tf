@@ -48,7 +48,6 @@ module "sg_openvpn_private_rule_openvpn" {
   source            = "terraform-aws-modules/security-group/aws"
   create_sg         = false
   security_group_id = module.sg_openvpn_private.security_group_id
-  egress_rules      = ["all-all"]
   ingress_with_cidr_blocks = [
     {
       rule        = "all-icmp"
