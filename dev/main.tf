@@ -15,8 +15,7 @@ terraform {
 
 provider "aws" {
   region                  = "eu-central-1"
-  shared_credentials_file = "~/.aws/credentials"
-  profile                 = "tf-turpin"
+  allowed_account_ids     = var.allowed_account_ids
 
   default_tags {
     tags = {

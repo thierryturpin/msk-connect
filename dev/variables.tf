@@ -11,6 +11,10 @@ variable "owner" {
   default     = "tturpin"
 }
 
+variable "allowed_account_ids" {
+  default = "883435383537"
+}
+
 variable "ami_key_pair_name" {
   type        = string
   description = "The key pair to use for the EC2 instances"
@@ -20,7 +24,7 @@ variable "ami_key_pair_name" {
 variable "my_public_ip" {
   type        = string
   description = "My public ip in the format x.x.x.x/32"
-  default     = "194.158.1.173/32"
+  default     = "178.118.246.6/32"
 }
 
 variable "vpc_cidr" {

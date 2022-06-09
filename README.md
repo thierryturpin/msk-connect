@@ -14,7 +14,7 @@ curl ifconfig.me/all
 * first connect with `root` user after that use `openvpnas`
 * accept all defaults
 * set password for webUI
-* in the webUI set DNS client settings to vpc dns: `172.31.0.2` and update running server
+* in the webUI set DNS client settings to vpc dns ( in section VPN setting ): `172.31.0.2` and update running server
 ```
 ssh root@{public_ip} -i PEM/turpin.be.pem
 

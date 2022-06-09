@@ -12,7 +12,7 @@
         "include.schema.changes": "false",
         "topic.creation.default.replication.factor": 2,
         "topic.creation.default.partitions": 10,
-        "topic.creation.default.retention.ms": 10000,
+        "topic.creation.default.retention.ms": 86400000,
         "topic.creation.default.cleanup.policy": "delete",
         "database.history.kafka.bootstrap.servers": "b-1.dev-msk.cf3xyg.c1.kafka.eu-central-1.amazonaws.com:9096,b-2.dev-msk.cf3xyg.c1.kafka.eu-central-1.amazonaws.com:9096",
         "database.history.kafka.topic": "dbhistory.dbo.orders",
@@ -21,6 +21,8 @@
         "database.history.consumer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"wk5m4t6cxZYVoiHz\";",
         "database.history.producer.security.protocol": "SASL_SSL",
         "database.history.producer.sasl.mechanism": "SCRAM-SHA-512",
-        "database.history.producer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"wk5m4t6cxZYVoiHz\";"
+        "database.history.producer.sasl.jaas.config": "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"connect\" password=\"wk5m4t6cxZYVoiHz\";",
+        "snapshot.select.statement.overrides": "dbo.orders",
+	    "snapshot.select.statement.overrides.dbo.orders": "select * from dbo.orders where CONVERT(DATETIME, order_date, 102) >= CONVERT(DATETIME, '\\''2019-12-01'\\'', 102);"
     }
 }
